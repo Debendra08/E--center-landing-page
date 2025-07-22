@@ -1,0 +1,72 @@
+@import 'utilities.css';
+@font-face {
+    font-family: nunito-medium;
+    src: url(Nunito/nunito-medium);
+}
+:root{
+    --light-white:#D8F3DD;
+      --gradient-start: rgba(25, 172, 54, 0.94); /* #19AC36 with 94% opacity */
+  --gradient-stop: 29%;
+  --gradient-end: #469655; /* 100% opacity */
+  
+  --main-gradient: linear-gradient(to right, 
+    var(--gradient-start) var(--gradient-stop), 
+    var(--gradient-end) 100%);
+    --text-heading:#143D20;
+    --heading:#B0F4BD;
+    --low-white:#B3E6BC;
+    --view-button:#70FA3E;
+    --bg-shade-green:#19BE38;
+    --title-happy:#19BE38;
+    --title-mud:#B6BA9F;
+    --bg-green:#51865C;
+    --bg-white:#D9D9D9;
+    --about-us:#797070;
+    --bg-dark:#313030;
+    --last-text:#FFFFFF;
+}
+body{
+    font-family: 'nunito',sans-serif;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    --webkit-font-smoothing:antialised;
+}
+
+header{
+    background: var(--heading);
+}
+.container{
+    max-width: 1152px;
+    padding: 0 40px;
+    margin: 0 auto;
+}
+header nav .right a{
+    color:var(--text-heading);
+    text-decoration: none;
+    margin-right: 2rem;
+    margin-left: 1rem; /* nav button left margin*/
+    text-transform: uppercase;
+    transition: all .3s;
+    font-size: 1.3rem;
+    font-weight: 510;   
+}
+
+header nav .right a:hover{
+    color: var(--bg-shade-green);
+}
+header nav {
+    padding: 1.2rem;
+}
+
+header nav .branding img{
+    height: 70px;
+    width: auto;
+    display: block; /*logo*/
+
+}
+header nav .branding{
+    margin-right: 6rem;
+}
