@@ -72,7 +72,7 @@ header nav .branding h1{
 
 .hero{
     background: linear-gradient(to right, var(--gradient-start) 29%, var(--gradient-end) 100%);
-    padding: 60px 0px; /*background hero*/
+    padding: 20px 0px; /*background hero*/
 }
 
 .hero .left h1{
@@ -112,6 +112,119 @@ header nav .branding h1{
   background-color: #159c2c; /* Darker green on hover */
 }
 .hero .right img{
-    margin-right: 12rem;
+    align-items: center;
+    margin-right: 5rem;
+    width: 600px;
     
 }
+.grids{
+  background: var(--bg-white);
+  padding-bottom: 40rem;
+}
+
+.filter-section{
+  align-items: center;
+}
+.filter-section h2{
+  /* margin-left: 20rem; */
+  margin-top: 2rem;
+}
+
+.heading-with-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center horizontally */
+  gap: 10px; /* spacing between h2 and image */
+  margin-bottom: 20px;
+}
+
+.heading-with-icon h2 {
+  font-size: 2.5rem;
+  color: var(--text-heading);
+
+}
+
+.heading-with-icon img {
+  width: 60px; /* adjust as needed */
+  height: auto;
+  margin-top: 1.2rem;
+}
+
+.heading-with-icon h2 span{
+  color: var(--bg-shade-green);
+  font-weight: bold;
+}
+
+/* section 3 */
+.category-select{
+  color: var(--bg-shade-green);
+}
+
+.filter-section select {
+  margin-left: 10rem;
+  padding: 10px 15px; /* smaller padding for compact look */
+  border: 2px solid var(--bg-shade-green);
+  color: var(--bg-shade-green);
+  background-color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 0; /* rectangle/square look */
+  width: fit-content; /* box just fits content */
+  appearance: none; /* optional: removes default arrow */
+  transition: all 0.3s ease;
+}
+
+.filter-section select:focus {
+  outline: var(--bg-dark);
+  box-shadow: 0 0 5px var(--bg-shade-green);
+}
+
+.filter-section option {
+  background-color: white;
+  color: var(--text-heading); /* or same green if you want */
+}
+
+/* grid  */
+.models-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 30px;
+  margin-top: 30px;
+  padding: 0 10rem;
+}
+
+.model-card {
+  background-color: #f9f9f9;
+  /* border-radius: 20px; */
+  /* border-color: var(--bg-shade-green); */
+  padding: 15px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+
+.model-card:hover {
+  background-color: var(--bg-shade-green);
+  color: rgb(255, 255, 255);
+  transform: translateY(-5px);
+}
+
+.model-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.model-card p {
+  display: none;
+  font-size: 0.95rem;
+  margin-top: 1px;
+}
+
+.model-card:hover p{
+  color: var(--last-text);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+

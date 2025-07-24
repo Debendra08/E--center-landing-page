@@ -37,9 +37,91 @@
             </div>
           </div>
           <div class="right">
-            <img src="./images/rickshaw.png" alt="">
+            <img src="./images/rick, scooter.png" alt="">
           </div>
         </div>
         </section>
+
+
+
+        
+  <section class="grids">
+  <div class="filter-section">
+    <div class="heading-with-icon">
+      <h2><span>Our </span>Models</h2>
+      <img src="./images/leaf charge.png" alt="Leaf Icon" />
+    </div>
+
+    <label for="categorySelect" class="sr-only"></label>
+    <div class="custom-select-wrapper">
+      <select id="categorySelect">
+        <option value="all" selected>All</option>
+        <option value="rickshaws">Rickshaws</option>
+        <option value="scooters">Scooters</option>
+        <option value="moped">Mopeds</option>
+        <option value="battery">Batteries</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="models-grid" id="modelsGrid">
+    <div class="model-card" data-category="rickshaws">
+      <img src="./images/mayuri.png" alt="Rickshaw" />
+      <h3>Electric Rickshaw X1</h3>
+      <p>Efficient and eco-friendly urban transport.</p>
+    </div>
+
+    <div class="model-card" data-category="battery">
+      <img src="./images/shadab.png" alt="Battery" />
+      <h3>Lithium Battery Pro</h3>
+      <p>Long-lasting and fast-charging battery unit.</p>
+    </div>
+
+    <div class="model-card" data-category="moped">
+      <img src="./images/shadab.png" alt="Moped" />
+      <h3>Compact Moped Z2</h3>
+      <p>Lightweight ride perfect for city streets.</p>
+    </div>
+
+    <div class="model-card" data-category="scooters">
+      <img src="./images/shadab.png" alt="Scooter" />
+      <h3>Smart Scooter A1</h3>
+      <p>Smooth, silent, and modern design.</p>
+    </div>
+
+    <div class="model-card" data-category="rickshaws">
+      <img src="./images/shadab.png" alt="Rickshaw" />
+      <h3>Classic E-Rickshaw</h3>
+      <p>Reliable design for everyday commute.</p>
+    </div>
+
+    <div class="model-card" data-category="scooters">
+      <img src="./images/shadab.png" alt="Scooter" />
+      <h3>Urban Scooter S3</h3>
+      <p>Built for style and efficiency in the city.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const select = document.getElementById("categorySelect");
+  const cards = document.querySelectorAll(".model-card");
+
+  select.addEventListener("change", function () {
+    const selectedCategory = this.value;
+
+    cards.forEach(card => {
+      if (selectedCategory === "all" || selectedCategory === "Choose Category") {
+        card.style.display = "block";
+      } else if (card.dataset.category === selectedCategory) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+</script>
+
+
 </body>
 </html>
