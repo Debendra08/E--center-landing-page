@@ -58,16 +58,17 @@ header nav .right a:hover{
     color: var(--bg-shade-green);
 }
 header nav {
-    padding: 1rem; /*vertical nav width*/
+    padding: 0.05rem; /*vertical nav width*/
 }
 header nav .branding{
     margin-right: 10rem;
 }
-header nav .branding h1{
-    color: var(--text-heading);
-    padding-right: 7rem;
-    font-size: 1.6rem;
-    cursor: pointer;
+header nav .branding img{
+   /* e-center logo NAME TRANSPARENT.png */
+    align-items: center;
+    margin-top: 1rem;
+    width: 200px;
+    
 }
 
 .hero{
@@ -85,13 +86,13 @@ header nav .branding h1{
 }
 
 .hero .left h6{
-    color: var(--low-white);
+    color: var(--last-text);
     margin-left: 15rem;
     font-size: 1.3rem;
     line-height: 1.3;
     font-weight: 300;
     margin-bottom: 0.5rem;
-    margin-top: 2rem;
+    margin-top: 1.6rem;
     margin-right: 15rem;
 }
 .hero .left button {
@@ -226,5 +227,66 @@ header nav .branding h1{
   color: var(--last-text);
   display: block;
   margin-bottom: 0.5rem;
+} 
+
+
+
+
+/* Grid container styling */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-gap: 20px; /* spacing between items */
+  padding: 20px;
+  max-width: 1100px;
+  margin: auto;
 }
 
+/* Each grid item */
+.grid-item {
+  position: relative;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Product image */
+.grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Title always visible */
+.grid-item h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #333;
+}
+
+/* Description hidden initially */
+.grid-item p {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  margin: 0 10px;
+  color: #555;
+}
+
+/* Show description on hover */
+.grid-item:hover p {
+  opacity: 1;
+  max-height: 100px; /* allows smooth reveal */
+  margin-top: 10px;
+}
