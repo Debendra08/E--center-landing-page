@@ -158,6 +158,7 @@ header nav .branding img:hover {
 }
 
 .heading-with-icon h2 {
+    /* models */
     font-size: 2.5rem;
     color: rgb(102, 118, 102)
 }
@@ -165,10 +166,12 @@ header nav .branding img:hover {
 .heading-with-icon img {
     width: 60px;
     height: auto;
-    margin-top: 1.2rem;
+    margin-top: 1.5rem;
+/* our models section */
 }
 
 .heading-with-icon h2 span {
+    /* our span section */
     color: var(--bg-shade-green);
     font-weight: bold;
 }
@@ -316,4 +319,169 @@ header nav .branding img:hover {
 /* Show overlay when hovering */
 .grid-item:hover p {
     opacity: 1;
+}
+
+
+
+
+/* Main section */
+.customer-hero {
+  background-color: #2e8e41; /* Section background */
+  padding: 60px 20px;
+  text-align: center;
+  min-height: 80vh; /* Makes section long vertically */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Top heading and icon */
+.heading-with-icon1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Heading text */
+.heading-with-icon1 h2 {
+  font-size: 2.5rem;
+  color: #D2D9DE;
+  margin: 0;
+}
+
+/* Highlighted span inside heading */
+.heading-with-icon1 h2 span {
+  color: #18D73D;
+  font-weight: bold;
+}
+
+/* Icon image */
+.heading-with-icon1 img {
+  width: 80px;
+  height: auto;
+  margin-top: -1rem;
+ 
+}
+
+/* Optional description under heading */
+.hero-description {
+  max-width: 700px;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #e0f2e9;
+  line-height: 1.6;
+}
+
+
+
+/* Slider Container */
+.testimonial-slider {
+  position: relative;
+  max-width: 950px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* Track holding all slides */
+.testimonial-track {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+}
+
+/* Each Slide */
+.testimonial-slide {
+  display: flex;
+  min-width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  padding: 100px;
+  box-sizing: border-box;
+}
+
+/* Image Section */
+.testimonial-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  width: 300px;
+}
+
+.testimonial-image img {
+  width: 300px;
+  max-width: 1000px;
+  border-radius: 8px;
+  border: 4px solid #fff;
+}
+
+/* Text Section */
+.testimonial-text {
+  flex: 2;
+  text-align: left;
+  color: #fff;
+}
+
+.testimonial-text p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.testimonial-text h4 {
+  color: #d2d9de;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Navigation Arrows */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.nav:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.prev {
+  left: 5px;
+}
+
+.next {
+  right: 5px;
+}
+
+/* Dots Indicator */
+.dots {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dot.active {
+  background: #18d73d;
+  transition: background 0.3s ease;
 }
