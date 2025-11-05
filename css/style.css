@@ -84,6 +84,75 @@ header nav .branding img:hover {
     cursor: pointer;
 }
 
+/* Responsive Design 📱 */
+/* -------------------- */
+
+/* Tablets (≤ 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  header nav .branding {
+    margin-right: 4rem;
+  }
+
+  header nav .right a {
+    font-size: 1.1rem;
+    margin-right: 1rem;
+  }
+
+  header nav .branding img {
+    width: 160px;
+  }
+}
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  header nav {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem;
+  }
+
+  header nav .branding {
+    margin: 0;
+  }
+
+  header nav .branding img {
+    width: 130px;
+    margin: 0;
+  }
+
+  header nav .right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  header nav .right a {
+    margin: 0.3rem 0;
+    font-size: 1rem;
+  }
+}
+
+/* Small Phones (≤ 480px) */
+@media (max-width: 480px) {
+  header nav .right a {
+    display: block;
+    margin: 0.4rem 0;
+    font-size: 0.9rem;
+  }
+
+  header nav .branding img {
+    width: 130px;
+  }
+}
+
+
+
 /* Hero Section */
 .hero {
     background: linear-gradient(to right, var(--gradient-start) 29%, var(--gradient-end) 100%);
@@ -122,17 +191,102 @@ header nav .branding img:hover {
     transition: background-color 0.3s ease;
     margin-left: 15rem;
     margin-top: 1rem;
+
 }
 
 .hero .left button:hover {
     background-color: #159c2c;
 }
 
+.hero .left button a{
+    text-decoration: none;
+    color: var(--light-white);
+    }
+
+    
 .hero .right img {
     align-items: center;
     margin-right: 5rem;
     width: 600px;
 }
+
+
+/* Responsive Design 📱 */
+/* -------------------- */
+
+/* Tablets (≤ 1024px) */
+@media (max-width: 1024px) {
+  .hero .left h1 {
+    margin-left: 5rem;
+    font-size: 3rem;
+  }
+
+  .hero .left h6,
+  .hero .left button {
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+
+  .hero .right img {
+    width: 400px;
+    margin-right: 2rem;
+  }
+}
+
+/* Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero .left h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+
+  .hero .left h6 {
+    margin: 1rem auto;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .hero .left button {
+    margin: 1rem auto;
+    padding: 15px 30px;
+    font-size: 1rem;
+  }
+
+  .hero .right img {
+    width: 80%;
+    margin: 1.5rem auto 0;
+  }
+}
+
+/* Small Phones (≤ 480px) */
+@media (max-width: 480px) {
+  .hero .left h1 {
+    font-size: 2rem;
+  }
+
+  .hero .left h6 {
+    font-size: 0.9rem;
+  }
+
+  .hero .left button {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+  }
+}
+
+
+
+
+
+
+
+
+
 
 /* Grid Section Wrapper */
 .grids {
@@ -678,6 +832,17 @@ header nav .branding img:hover {
   font-size: 1.8rem;
   margin-bottom: 10px;
 }
+.social-left a {
+  text-decoration: underline;
+  color: white;
+}
+.social-left a :hover {
+  text-decoration: none;
+  color:#18d73d;
+}
+
+
+
 
 .social-left p {
   font-size: 1rem;
@@ -755,13 +920,13 @@ header nav .branding img:hover {
 }
 
 
+.footer-bottom {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #313030;
+}
 
 
-
-
-
-
-/* Responsive */
 @media (max-width: 768px) {
   .social {
     flex-direction: column;
