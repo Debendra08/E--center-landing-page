@@ -3,97 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-CENTER - E-Rickshaws</title>
+    <title>E-CENTER</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="./rickshaw-style.css">
-   <link rel="stylesheet" href="./css/dynamic.css">
    <link rel="icon" type="image/png" href="./images/favicon.png">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<meta name="description" content="E-CENTER Tikapur - E-Rickshaws showroom, sales, and repair services in Tikapur.">
+<!-- Add these inside your <head> section -->
+<meta name="description" content="E-CENTER Tikapur - Electric rickshaw & scooter showroom, sales, and repair services in Tikapur. Your trusted partner for eco-friendly transportation solutions.">
+<meta name="keywords" content="electric rickshaw, electric scooter, tikapur, e-vehicle, vehicle repair, ecenter, electric vehicle showroom">
+ 
 
-   <!-- Firebase (powers dynamic products) -->
-   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-   <script src="./js/firebase-config.js"></script>
-   <script src="./js/products-data.js"></script>
+
 </head>
 <body>
 
   <header class="navbar">
-    <div class="branding">
-      <a href="index.html">
-        <img src="./images/e center logo NAME TRANSPARENT.png" alt="E-CENTER">
-      </a>
-    </div>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <nav class="nav-menu" id="navMenu">
-      <a href="index.html">Home</a>
-      <a href="index.html#product">Products</a>
-      <a href="index.html#customer">Customers</a>
-      <a href="index.html#brand">Brands</a>
-      <a href="index.html#about">About Us</a>
-    </nav>
-  </header>
+    
+
+  <div class="branding">
+    <a href="index.html">
+      <img src="./images/e center logo NAME TRANSPARENT.png" alt="E-CENTER">
+    </a>
+  </div>
+
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+   <nav class="nav-menu" id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="index.html">Customers</a>
+    <a href="index.html">Brands</a>
+    <a href="index.html">About Us</a>
+  </nav>
+
+</header>
 
 <section class="product-page">
-  <div class="filter-section" style="padding-top:30px;">
-    <div class="heading-with-icon">
-      <h2><span>Our </span>E-Rickshaws</h2>
-      <img src="./images/leaf charge.png" alt="Leaf Icon" />
-    </div>
-  </div>
+    <div class="product-container">
 
-  <div class="grid-container" id="categoryGrid">
-    <!-- Loaded dynamically from Firestore -->
-  </div>
+        <!-- Product Images -->
+       <!-- Product Images -->
+<div class="productpage-image">
+
+    <div class="slider">
+        <div class="slide-container">
+            <img id="main-image" src="./images/shaddab1.jpg" alt="Shadab E-Rickshaw">
+
+            <!-- <button class="prev" onclick="prevSlide()">&#10094;</button>
+            <button class="next" onclick="nextSlide()">&#10095;</button> -->
+        </div>
+
+        <div class="thumbnail-gallery">
+            <img src="./images/shaddab1.jpg" onclick="goToSlide(0)">
+            <img src="./images/shaddab2.jpg" onclick="goToSlide(1)">
+            <img src="./images/shaddab3.jpg" onclick="goToSlide(2)">
+            <img src="./images/shadab rickshaw.png" onclick="goToSlide(3)">
+        </div>
+    </div>
+
+</div>
+
+        <!-- Product Details -->
+        <div class="productpage-details">
+            <h1>Shadab E-Rickshaw</h1>
+
+            <p>
+                <h3>Description</h3><br>
+Shadab Electric Rickshaw is a reliable and eco-friendly passenger vehicle designed for strong performance, durability, and low operating cost. It comes in two models: Flexy and Duranto, both supporting Lithium battery technology for longer life and better efficiency. </p><br>
+
+            <h3>Flexy Specifications</h3>
+            <ul>
+                <li>Battery: 48V </li>
+                <li>Motor: 1000W</li>
+                <li>Range: 60 to 80 km</li>
+                <li>Top Speed: 35 km/h</li>
+                <li>Capacity: 4 Passengers</li>
+            </ul>
+                
+                <h3>Duranto Specifications</h3>
+            <ul>
+                <li>Battery: 48/60V </li>
+                <li>Motor: 1200W</li>
+                <li>Range: 80 to 100 km</li>
+                <li>Top Speed: 45 km/h</li>
+                <li>Capacity: 4 Passengers Max (5)</li>
+            </ul>
+
+            <a href="tel:9868424816" class="btn">Call Now</a>
+            <a href="https://wa.me/97798156042366" class="btn">WhatsApp</a>
+        </div>
+
+    </div>
 </section>
 
 <script>
-function toggleMenu() {
-  document.getElementById("navMenu").classList.toggle("active");
+function changeImage(image) {
+    document.getElementById("main-image").src = image.src;
 }
 
-(async function () {
-  const grid = document.getElementById("categoryGrid");
-  renderSkeletonCards(grid, 3);
-  try {
-    const products = await fetchProductsByCategory("rickshaw");
-    if (!products.length) {
-      renderEmptyState(grid, "No E-Rickshaws added yet. Please call us for current stock: 9868424816");
-    } else {
-      grid.innerHTML = products.map(productCardHTML).join("");
-    }
-  } catch (err) {
-    console.error(err);
-    renderEmptyState(grid, "Couldn't load products right now. Please refresh.");
-  }
-})();
+
+
+
+</script>
+ 
+
+<script>
+let images = [
+    "./images/shaddab1.jpg",
+    "./images/shaddab2.jpg",
+    "./images/shaddab3.jpg",
+    "./images/shadab rickshaw.png",
+   
+];
+
+let productindex = 0;
+let mainImage = document.getElementById("main-image");
+
+// Show image
+function showImage(i){
+    productindex = i;
+    mainImage.src = images[productindex];
+}
+
+// Next
+function nextSlide(){
+    productindex = (productindex + 1) % images.length;
+    mainImage.src = images[productindex];
+}
+
+// Prev
+function prevSlide(){
+    productindex = (productindex - 1 + images.length) % images.length;
+    mainImage.src = images[productindex];
+}
+
+// Thumbnail click
+function goToSlide(i){
+    showImage(i);
+}
+
+// Auto slide
+setInterval(() => {
+    nextSlide();
+}, 10000);
 </script>
 
+
+      
+
+
+
+
+
+
+
+ 
+
+
+  
+
+   
+
+
+
+
+<script>
+const track = document.querySelector('.testimonial-track');
+const slides = document.querySelectorAll('.testimonial-slide');
+const dots = document.querySelectorAll('.dot');
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
+  const navMenu = document.getElementById("navMenu");
+  const navLinks = document.querySelectorAll(".nav-menu a");
+
+  function toggleMenu() {
+    navMenu.classList.toggle("active");
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      // Close menu only on mobile
+      if (window.innerWidth <= 768) {
+        navMenu.classList.remove("active");
+      }
+    });
+  });
+
+let index = 0;
+const slideCount = slides.length;
+let autoSlide;
+
+ function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("active");
+  }
+  // for hamburger menu 
+
+
+
+/* // Update slide position */
+function updateSlider() {
+  track.style.transform = `translateX(-${index * 100}%)`;
+  dots.forEach(dot => dot.classList.remove('active'));
+  dots[index].classList.add('active');
+}
+
+// Go to next slide
+function nextSlide() {
+  index = (index + 1) % slideCount;
+  updateSlider();
+}
+
+// Go to previous slide
+function prevSlide() {
+  index = (index - 1 + slideCount) % slideCount;
+  updateSlider();
+}
+
+// Auto slide every 10 seconds
+function startAutoSlide() {
+  autoSlide = setInterval(nextSlide, 30000);
+}
+
+// Stop auto slide when user interacts
+function stopAutoSlide() {
+  clearInterval(autoSlide);
+  startAutoSlide(); // restart timer
+}
+
+// Event listeners
+nextBtn.addEventListener('click', () => {
+  nextSlide();
+  stopAutoSlide();
+});
+
+prevBtn.addEventListener('click', () => {
+  prevSlide();
+  stopAutoSlide();
+});
+
+dots.forEach((dot, dotIndex) => {
+  dot.addEventListener('click', () => {
+    index = dotIndex;
+    updateSlider();
+    stopAutoSlide();
+  });
+});
+
+// Initialize
+updateSlider();
+startAutoSlide();
+
+
+
+
+
+
+
+</script>
+
+
 <section id="contact" class="social">
+  <!-- Left Section -->
   <div class="social-left">
     <h2>E-Center</h2>
     <p>Tikapur-01<br>Kailali, Nepal</p>
     <div class="contact-info">
-<a href="tel:+9779815604236"><i class="fas fa-phone"></i>9815604236</a>
+      <!-- Phone Numbers -->
+<a href="tel:+9779815604236">
+  <i class="fas fa-phone"></i>9815604236
+</a>
 <br>
-<a href="tel:+9779768424816"><i class="fas fa-phone"></i>9868424816</a>
+<a href="tel:+9779768424816">
+  <i class="fas fa-phone"></i>9868424816
+</a>
+
+<!-- Email -->
 <br>
-<a href="mailto:ecentertkp@gmail.com"><i class="fas fa-envelope"></i>ecentertkp@gmail.com</a>
+<a href="mailto:ecentertkp@gmail.com">
+  <i class="fas fa-envelope"></i>ecentertkp@gmail.com
+</a>
     </div>
   </div>
 
+
+
+   <!-- Center Section -->
   <div class="social-center">
     <h2>Follow us:</h2>
     <ul>
-      <li><a href="https://wa.me/9815604236" target="_blank"><i class="fab fa-whatsapp"></i> Whatsapp</a></li>
-      <li><a href="https://www.tiktok.com/@e_center_tikapur" target="_blank"><i class="fab fa-tiktok"></i> Tiktok</a></li>
-      <li><a href="https://www.facebook.com/profile.php?id=100063887899507" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
+      <li>
+        <a href="https://wa.me/9815604236" target="_blank">
+          <i class="fab fa-whatsapp"></i> Whatsapp
+        </a>
+      </li>
+      <li>
+        <a href="https://www.tiktok.com/@e_center_tikapur" target="_blank">
+          <i class="fab fa-tiktok"></i> Tiktok
+        </a>
+      </li>
+      <li>
+        <a href="https://www.facebook.com/profile.php?id=100063887899507" target="_blank">
+          <i class="fab fa-facebook"></i> Facebook
+        </a>
+      </li>
      <p><a href="https://drive.google.com/drive/folders/1e0qFN0bMgabiTzUMx4X1TCVNL_sW-7zv?usp=sharing" target="_blank">For More Images</a></p>
     </ul>
   </div>
 
+
+
+  <!-- Right Section -->
   <div class="social-right">
     <p>
       "Powering your ride, the eco-friendly way. <br>
@@ -101,6 +319,7 @@ function toggleMenu() {
     </p>
   </div>
 </section>
+
 
 <section class="footer">
   <div class="footer-left">
@@ -111,7 +330,53 @@ function toggleMenu() {
   </div>
 </section>
 
+
+
+<script>
+  const form = document.getElementById("quoteForm");
+  const status = document.getElementById("form-status");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const data = new FormData(form);
+
+    fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        status.innerHTML = "✅ Request sent successfully!";
+        form.reset();
+      } else {
+        status.innerHTML = "❌ Oops! Something went wrong.";
+      }
+    }).catch(error => {
+      status.innerHTML = "❌ Network error!";
+    });
+  }
+
+  form.addEventListener("submit", handleSubmit);
+</script>
+
+
+
+
+
+
+<!-- Font Awesome Icons -->
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<script src="./script.js"></script>
+
+
+
+
+
+
+
+
+  <script src="./script.js">
+
+    
+  </script>
 </body>
 </html>

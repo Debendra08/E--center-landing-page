@@ -6,15 +6,8 @@
     <title>E-CENTER</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="./css/style.css">
-   <link rel="stylesheet" href="./css/dynamic.css">
    <link rel="icon" type="image/png" href="./images/favicon.png">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <!-- Firebase (powers dynamic products + admin panel) -->
-   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-   <script src="./js/firebase-config.js"></script>
-   <script src="./js/products-data.js"></script>
 <!-- Add these inside your <head> section -->
 <meta name="description" content="E-CENTER Tikapur - Electric rickshaw & scooter showroom, sales, and repair services in Tikapur. Your trusted partner for eco-friendly transportation solutions.">
 <meta name="keywords" content="electric rickshaw, electric scooter, tikapur, e-vehicle, vehicle repair, ecenter, electric vehicle showroom">
@@ -101,59 +94,64 @@
       <img src="./images/leaf charge.png" alt="Leaf Icon" />
     </div>
 
-    <div class="category-pills" id="categoryPills">
-      <button class="category-pill active" data-category="all">All</button>
-      <button class="category-pill" data-category="rickshaw">Rickshaw</button>
-      <button class="category-pill" data-category="loader">Loader</button>
-      <button class="category-pill" data-category="scooter">Scooter</button>
-      <button class="category-pill" data-category="cycle">Cycle</button>
-      <button class="category-pill" data-category="moped">Moped</button>
-      <button class="category-pill" data-category="battery">Battery</button>
-    </div>
+    <div class="grid-container">
+       <!-- for 1st -->
+        <a href="rickshaw.html" class="card-link" target="_blank">
+       <div class="grid-item">
+    <img src="./images/shadab rickshaw.png" alt="Product">
+    <h3>Shadab E-Rickshaw</h3>
+    <p>A reliable and eco-friendly electric rickshaw designed for smooth passenger transport. It offers excellent mileage, low maintenance, and strong build quality, making it perfect for daily use. Ideal for affordable and sustainable transportation</p>
+  </div>
+  </a>
+  
+  
 
-    <div class="grid-container" id="dynamicProductGrid">
-      <!-- Products load live from Firestore via js/products-data.js.
-           Skeleton placeholders show first, real cards fade in after. -->
+   <!-- for 2nd -->
+        <a href="loader.html" class="card-link" target="_blank">
+        <div class="grid-item">
+    <img src="./images/loader rickshaw.png" alt="Product">
+    <h3>Shadab Loader E-Rickshaw</h3>
+    <p>A durable and eco-friendly electric rickshaw designed for heavy-duty goods transport. Built with a strong frame and powerful motor, it delivers smooth performance and excellent mileage. With low maintenance and running costs, it’s perfect for businesses, cargo delivery, and logistics, offering a reliable and sustainable transportation solution.</p>
+  </div>
+  </a>
+
+   <!-- for 3rd -->
+        <a href="scooter.html" class="card-link" target="_blank">
+        <div class="grid-item">
+    <img src="./images/fantacy-pro.jpeg" alt="Fantacy Pro electric vehicle parked on a clean white background, showing sleek modern design and vibrant colors, conveying a sense of innovation and eco-friendly mobility">
+    <h3>Fantacy Pro scooter</h3>
+    <p>The Fantacy Pro is a lightweight electric scooter (65 KG) made in India. It can go up to 25 KM/H and travel 80–100 KM on a single charge. It comes with a 250W motor, LED headlight, alloy wheels, remote anti-theft, and waterproof throttle. Stylish, safe, and perfect for city rides!</p>
+  </div>
+  </a>
+
+   <!-- for 4th -->
+        <a href="cycle.html" class="card-link" target="_blank">
+        <div class="grid-item">
+    <img src="./images/kaisai.avif" alt="Product">
+    <h3>Kaisai electric bicycle</h3>
+    <p>Kaisai is a stylish and powerful electric bicycle with a 350W motor, long-lasting battery, fat tires, and dual suspension. It features pedal assist, bright lights, a digital display, security locks, and convenient storage for a smooth and practical ride.</p>
+  </div>
+  </a>
+
+   <!-- for 5th -->
+        <a href="moped.html" class="card-link" target="_blank">
+        <div class="grid-item">
+    <img src="./images/moped 111111.png" alt="Product">
+    <h3>Kaisai Electric Mopeds</h3>
+    <p>Kaisai electric mopeds are eco-friendly and stylish, powered by lithium batteries that give 80–90 KM range and speeds of 45–50 KM/H. Made by Wuxi Kaisai Electric Technology Co., Ltd., now these scooters are available in Nepal. Some models feature 20-inch wheels and extra safety features for a smooth, secure ride.</p>
+  </div>
+  </a>
+
+   <!-- for 6th -->
+        <a href="battery.html" class="card-link" target="_blank">
+        <div class="grid-item">
+    <img src="./images/batteries icon.png" alt="Product">
+    <h3>Electric Rickshaw & Home Inverter Batteries</h3>
+    <p>We offer lithium dry batteries for electric rickshaws and acid batteries for rickshaws and home inverters. Brands include Eastman, Duratex, Trontek, Lebo, N-Batt, Cygna, Missile, and more. Lithium batteries come with 3-year warranty, while acid batteries have 6, 12, or 36 months warranty. Reliable, long-lasting power for all your needs.</p>
+  </div>
+  </a>
     </div>
 </section>
-
-<script>
-(function () {
-  const grid = document.getElementById("dynamicProductGrid");
-  const pills = document.querySelectorAll(".category-pill");
-  let allProducts = [];
-
-  function draw(list) {
-    if (!list.length) {
-      renderEmptyState(grid, "No products added yet. Check back soon!");
-      return;
-    }
-    grid.innerHTML = list.map(productCardHTML).join("");
-  }
-
-  async function loadProducts() {
-    renderSkeletonCards(grid, 6);
-    try {
-      allProducts = await fetchAllProducts();
-      draw(allProducts);
-    } catch (err) {
-      console.error("Failed to load products:", err);
-      renderEmptyState(grid, "Couldn't load products right now. Please refresh.");
-    }
-  }
-
-  pills.forEach(pill => {
-    pill.addEventListener("click", () => {
-      pills.forEach(p => p.classList.remove("active"));
-      pill.classList.add("active");
-      const cat = pill.dataset.category;
-      draw(cat === "all" ? allProducts : allProducts.filter(p => p.category === cat));
-    });
-  });
-
-  loadProducts();
-})();
-</script>
 
 
 
