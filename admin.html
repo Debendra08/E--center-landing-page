@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — E-CENTER</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" type="image/png" href="./images/favicon.png">
+  <link rel="stylesheet" href="./css/admin.css">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="./js/firebase-config.js"></script>
+</head>
+<body class="admin-body">
+
+  <!-- ===== LOGIN ===== -->
+  <div class="admin-login-wrap" id="loginScreen">
+    <div class="admin-login-card">
+      <img src="./images/e center logo NAME TRANSPARENT.png" alt="E-CENTER">
+      <h1>Admin Panel</h1>
+      <p class="sub">Sign in to manage products &amp; leads</p>
+      <form id="loginForm">
+        <input type="email" id="loginEmail" placeholder="Admin email" required autocomplete="username">
+        <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password">
+        <button type="submit" id="loginBtn">Sign In</button>
+        <p id="loginError"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== APP SHELL ===== -->
+  <div class="admin-shell" id="adminShell">
+    <aside class="admin-sidebar">
+      <div class="brand">
+        <img src="./images/e center logo NAME TRANSPARENT.png" alt="">
+        <span>E-CENTER Admin</span>
+      </div>
+      <nav class="admin-nav">
+        <button class="nav-btn active" data-panel="dashboardPanel"><i class="fas fa-chart-line"></i> Dashboard</button>
+        <button class="nav-btn" data-panel="productsPanel"><i class="fas fa-motorcycle"></i> Products</button>
+        <button class="nav-btn" data-panel="leadsPanel"><i class="fas fa-users"></i> Leads <span class="badge" id="newLeadsBadge" style="display:none;">0</span></button>
+      </nav>
+      <button class="admin-logout" id="logoutBtn"><i class="fas fa-right-from-bracket"></i> Log Out</button>
+    </aside>
+
+    <main class="admin-main">
+
+      <!-- DASHBOARD -->
+      <section class="admin-panel active" id="dashboardPanel">
+        <div class="admin-topbar"><h2>Dashboard</h2></div>
+        <div class="stat-cards">
+          <div class="stat-card"><div class="num" id="statProducts">–</div><div class="label">Total Products</div></div>
+          <div class="stat-card"><div class="num" id="statLeads">–</div><div class="label">Total Leads</div></div>
+          <div class="stat-card"><div class="num" id="statNewLeads">–</div><div class="label">New Leads</div></div>
+        </div>
+        <div class="product-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Recent Leads</th><th>Product</th><th>Phone</th><th>Date</th></tr></thead>
+            <tbody id="recentLeadsBody"><tr><td colspan="4" class="empty-row">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section class="admin-panel" id="productsPanel">
+        <div class="admin-topbar">
+          <h2>Products</h2>
+          <button class="btn-primary" id="addProductBtn"><i class="fas fa-plus"></i> Add Product</button>
+        </div>
+        <div class="product-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Featured</th><th></th></tr></thead>
+            <tbody id="productsBody"><tr><td colspan="5" class="empty-row">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- LEADS -->
+      <section class="admin-panel" id="leadsPanel">
+        <div class="admin-topbar"><h2>Customer Leads</h2></div>
+        <div class="leads-table-wrap">
+          <table class="admin-table">
+            <thead><tr><th>Name</th><th>Phone</th><th>Address</th><th>Product</th><th>Message</th><th>Date</th><th>Status</th><th></th></tr></thead>
+            <tbody id="leadsBody"><tr><td colspan="8" class="empty-row">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ===== PRODUCT MODAL ===== -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-box">
+      <h3 id="productModalTitle">Add Product</h3>
+      <form id="productForm">
+        <input type="hidden" id="productId">
+        <div class="form-row">
+          <label>Product Name</label>
+          <input type="text" id="pName" required placeholder="e.g. Shadab E-Rickshaw Duranto">
+        </div>
+        <div class="form-row">
+          <label>Category</label>
+          <select id="pCategory" required>
+            <option value="rickshaw">Rickshaw</option>
+            <option value="loader">Loader</option>
+            <option value="scooter">Scooter</option>
+            <option value="cycle">Cycle</option>
+            <option value="moped">Moped</option>
+            <option value="battery">Battery</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Short Description (shown on cards)</label>
+          <textarea id="pShortDesc" rows="2" required placeholder="One or two sentence summary"></textarea>
+        </div>
+        <div class="form-row">
+          <label>Full Description (shown on product page)</label>
+          <textarea id="pFullDesc" rows="3" placeholder="Detailed description"></textarea>
+        </div>
+        <div class="form-row">
+          <label>Specifications (one per line)</label>
+          <textarea id="pSpecs" rows="5" placeholder="Battery: 48V&#10;Motor: 1000W&#10;Range: 60-80 km&#10;Top Speed: 35 km/h"></textarea>
+          <small>Each line becomes a bullet point on the product page.</small>
+        </div>
+        <div class="form-row">
+          <label>Image URLs (one per line, first = main image)</label>
+          <textarea id="pImages" rows="3" placeholder="./images/shaddab1.jpg&#10;./images/shaddab2.jpg"></textarea>
+          <small>Upload images to your images/ folder in GitHub, or paste any public image link.</small>
+        </div>
+        <div class="form-row checkbox-row">
+          <input type="checkbox" id="pFeatured">
+          <label style="margin:0;">Feature on homepage highlights</label>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="cancelProductBtn">Cancel</button>
+          <button type="submit" class="btn-primary" id="saveProductBtn">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="./js/admin.js"></script>
+</body>
+</html>
